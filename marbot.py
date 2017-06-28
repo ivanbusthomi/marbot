@@ -208,6 +208,45 @@ class marbot:
 
     #--------------------------------------------------------------------------
 
+    def show_home(self):
+        """Show the home panel to the widget"""
+
+        self.dockwidget.stackedWidget.setCurrentIndex(0)
+
+    def show_buffer(self):
+        """Show the buffer panel to the widget"""
+
+        self.dockwidget.stackedWidget.setCurrentIndex(1)
+
+    def show_equidistant(self):
+        """Show the equidistant panel to the widget"""
+
+        self.dockwidget.stackedWidget.setCurrentIndex(2)
+
+    def show_archipelago(self):
+        """Show the archipelago panel to the widget"""
+
+        self.dockwidget.stackedWidget.setCurrentIndex(3)
+
+    def show_bay(self):
+        """Show the bay closing panel to the widget"""
+
+        self.dockwidget.stackedWidget.setCurrentIndex(4)
+
+    def show_help(self):
+        """Show help"""
+
+        print "Help is not implemented yet"
+
+    def show_about(self):
+        """Show help"""
+
+        print "About is not implemented yet"
+
+    def clear_inputs(self):
+        """This function clear the dock at the start"""
+        self.dockwidget.arch_input_layer.clear()
+
     def run(self):
         """Run method that loads and starts the plugin"""
 
@@ -222,6 +261,14 @@ class marbot:
             if self.dockwidget == None:
                 # Create the dockwidget (after translation) and keep reference
                 self.dockwidget = marbotDockWidget()
+                # connect button to each page on the widget
+                self.dockwidget.btn_show_home.clicked.connect(self.show_home)
+                self.dockwidget.btn_show_buffer.clicked.connect(self.show_buffer)
+                self.dockwidget.btn_show_equi.clicked.connect(self.show_equidistant)
+                self.dockwidget.btn_show_arch.clicked.connect(self.show_archipelago)
+                self.dockwidget.btn_show_bay.clicked.connect(self.show_bay)
+                self.dockwidget.btn_show_help.clicked.connect(self.show_help)
+                self.dockwidget.btn_show_about.clicked.connect(self.show_about)
 
             # connect to provide cleanup on closing of dockwidget
             self.dockwidget.closingPlugin.connect(self.onClosePlugin)
