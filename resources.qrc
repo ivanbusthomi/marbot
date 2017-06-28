@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/marbot" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
